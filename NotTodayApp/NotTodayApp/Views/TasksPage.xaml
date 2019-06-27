@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="Not Today!" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:NotTodayApp.ViewModel;assembly=NotTodayApp"
+             x:Class="NotTodayApp.Views.TasksPage">
+  <ContentPage.BindingContext>
+    <viewModels:TasksViewModel />
+  </ContentPage.BindingContext>
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Name="plus" Text="+" Clicked="AddItemClicked" >
+      <ToolbarItem.IconImageSource>
+        <OnPlatform x:TypeArguments="ImageSource">
+          <On Platform="Android, UWP" Value="plus.png" />
+        </OnPlatform>
+      </ToolbarItem.IconImageSource>
+    </ToolbarItem>
+  </ContentPage.ToolbarItems>
+  
+  <StackLayout>
+    <Label Text="Welcome to Not Today!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+    <ListView ItemsSource="{Binding Tasks}" >
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding Title}"
+                          Detail="{Binding Description}" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+</ContentPage>
