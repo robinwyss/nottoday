@@ -5,14 +5,11 @@ using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation( XamlCompilationOptions.Compile )]
 namespace NotTodayApp {
-  public partial class App: Application {
+  public class App: Application {
     public App() {
       //InitializeComponent();
-      var nav = new NavigationPage( new TasksPage() );
-      MainPage = nav;
-      //MainPage = new MainPage();
+      MainPage = new MainPage();
     }
-
 
     protected override void OnStart() {
       // Handle when your app starts

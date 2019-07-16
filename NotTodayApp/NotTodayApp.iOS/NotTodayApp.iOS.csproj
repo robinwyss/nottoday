@@ -148,12 +148,12 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\NotTodayApp\NotTodayApp.csproj">
-      <Project>{BF9619AC-863E-4784-93B7-6CA53A726DD8}</Project>
+      <Project>{3AE59E77-5110-434D-A0C6-23F66C764324}</Project>
       <Name>NotTodayApp</Name>
     </ProjectReference>
   </ItemGroup>

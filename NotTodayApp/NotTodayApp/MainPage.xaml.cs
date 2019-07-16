@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace NotTodayApp {
-  public partial class MainPage: ContentPage {
+  public partial class MainPage: Shell {
     public MainPage() {
       InitializeComponent();
     }
