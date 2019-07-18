@@ -12,13 +12,11 @@ namespace NotTodayApp.Views {
 
 
   [XamlCompilation( XamlCompilationOptions.Compile )]
-  public partial class TasksPage: ContentPage, IViewFor<TasksViewModel> {
-    public TasksPage() {
+  public partial class TaskListView: ContentPage {
+    public TaskListView() {
       InitializeComponent();
       BindingContext = new TasksViewModel();
     }
-
-    public TasksViewModel ViewModel { set => BindingContext = value; }
 
     private void AddItemClicked( object sender, EventArgs e ) {
 
@@ -27,7 +25,8 @@ namespace NotTodayApp.Views {
     private void ItemSelected( object sender, ItemTappedEventArgs e ) {
       var task = e.Item as NotTodayApp.Model.Task;
       var taskDetailVM = new TaskDetailViewModel( task );
-      Navigation.PushAsync( new TaskDetailView( taskDetailVM ) );
+      Shell.Current.GoToAsync( "taskdetails" );
+      //Navigation.PushAsync( new TaskDetailView( taskDetailVM ) );
     }
   
   }

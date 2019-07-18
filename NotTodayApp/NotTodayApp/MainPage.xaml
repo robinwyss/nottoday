@@ -1,15 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:NotTodayApp" xmlns:views="clr-namespace:NotTodayApp.Views" x:Class="NotTodayApp.MainPage">
-    <TabBar>
-        <Tab Title="Today">
-            <ShellContent>
-                <views:TasksPage />
-            </ShellContent>
-        </Tab>
-        <Tab Title="Not Today">
-            <ShellContent>
-                <views:TasksPage />
-            </ShellContent>
-        </Tab>
-    </TabBar>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:local="clr-namespace:NotTodayApp" xmlns:views="clr-namespace:NotTodayApp.Views" x:Class="NotTodayApp.MainPage"
+       FlyoutBackgroundColor="White" BackgroundColor="DarkSlateGray" 
+       Title="Not Today"
+       >
+  <FlyoutItem Title="Today">
+    <Tab>
+      <ShellContent>
+        <views:TaskListView />
+      </ShellContent>
+    </Tab>
+  </FlyoutItem>
+  <FlyoutItem Title="Not Today">
+    <Tab>
+      <ShellContent>
+        <views:TaskListView />
+      </ShellContent>
+    </Tab>
+
+  </FlyoutItem>
+  <FlyoutItem Title="Add">
+    <Tab>
+      <ShellContent>
+        <views:TaskEditView />
+      </ShellContent>
+    </Tab>
+
+  </FlyoutItem>
+
+
 </Shell>

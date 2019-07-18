@@ -8,6 +8,7 @@ namespace NotTodayApp {
   public class App: Application {
     public App() {
       //InitializeComponent();
+      Routing.RegisterRoute( "taskdetails", typeof( TaskDetailView ) );
       MainPage = new MainPage();
     }
 

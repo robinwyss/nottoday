@@ -1,18 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage Title="Not Today!" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NotTodayApp.Views.TasksPage">
- 
-  
-  <ContentPage.ToolbarItems>
-    <ToolbarItem Name="plus" Text="+" Clicked="AddItemClicked" >
-      <ToolbarItem.IconImageSource>
-        <OnPlatform x:TypeArguments="ImageSource">
-          <On Platform="Android, UWP" Value="plus.png" />
-        </OnPlatform>
-      </ToolbarItem.IconImageSource>
-    </ToolbarItem>
-  </ContentPage.ToolbarItems>
+             x:Class="NotTodayApp.Views.TaskListView">
 
   <StackLayout>
     <ListView ItemsSource="{Binding Tasks}" ItemTapped="ItemSelected" SelectionMode="None">
