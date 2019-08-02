@@ -11,8 +11,12 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.581479" />
+    <PackageReference Include="LiteDB" Version="4.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Model\Task.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\TasksListView.xaml.cs">
       <DependentUpon>TasksListView.xaml</DependentUpon>
@@ -29,5 +33,8 @@
     <EmbeddedResource Update="Views\TasksListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NotToday.Storage\NotToday.Storage.csproj" />
   </ItemGroup>
 </Project>

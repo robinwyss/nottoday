@@ -4,25 +4,32 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
-using NotTodayApp.Model;
+using NotToday.Storage;
+using NotToday.Storage.Model;
 using NotTodayApp.Utils;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace NotTodayApp.ViewModel {
-  public class TasksViewModel: BaseViewModel {
+  public class TasksViewModel : BaseViewModel {
     private ObservableCollection<Task> _tasks;
+    private ITaskRepository taskRepository;
+
     public ObservableCollection<Task> Tasks {
       get => _tasks;
       set {
         _tasks = value;
-        OnPropertyChanged( "Tasks" );
+        OnPropertyChanged();
       }
     }
 
     public TasksViewModel() {
-      _tasks = new ObservableCollection<Task>();
-      _tasks.Add( new Task( "Test", "Test task to do today", DateTime.Now ) );
+      taskRepository = DependencyService.Resolve<ITaskRepository>();
     }
 
+    internal void LoadTasks() {
+      var tasks = taskRepository.GetAllTasks();
+      Tasks = new ObservableCollection<Task>(tasks);
+    }
   }
 }

@@ -8,15 +8,22 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace NotTodayApp.Views {
-  [XamlCompilation( XamlCompilationOptions.Compile )]
-  public partial class TaskDetailView: ContentPage {
-    public TaskDetailView( TaskDetailViewModel viewModel ) {
-      InitializeComponent();
-      BindingContext = viewModel;
+
+  [QueryProperty("TaskId", "taskId")]
+  [XamlCompilation(XamlCompilationOptions.Compile)]
+  public partial class TaskDetailView : ContentPage {
+    private readonly TaskDetailViewModel viewModel;
+
+    public string TaskId {
+      set {
+        viewModel.LoadTask(value);
+      }
     }
 
     public TaskDetailView() {
       InitializeComponent();
+      viewModel = new TaskDetailViewModel();
+      BindingContext = viewModel;
     }
   }
 }

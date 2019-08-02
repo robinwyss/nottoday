@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using NotToday.Storage.Model;
 using NotTodayApp.Utils;
 using NotTodayApp.ViewModel;
 using Xamarin.Forms;
@@ -11,23 +11,27 @@ using Xamarin.Forms.Xaml;
 namespace NotTodayApp.Views {
 
 
-  [XamlCompilation( XamlCompilationOptions.Compile )]
-  public partial class TaskListView: ContentPage {
+  [XamlCompilation(XamlCompilationOptions.Compile)]
+  public partial class TaskListView : ContentPage {
+    private TasksViewModel viewModel;
+
     public TaskListView() {
       InitializeComponent();
-      BindingContext = new TasksViewModel();
+      viewModel = new TasksViewModel();
+      BindingContext = viewModel;
     }
 
-    private void AddItemClicked( object sender, EventArgs e ) {
 
-    }
-
-    private void ItemSelected( object sender, ItemTappedEventArgs e ) {
-      var task = e.Item as NotTodayApp.Model.Task;
-      var taskDetailVM = new TaskDetailViewModel( task );
-      Shell.Current.GoToAsync( "taskdetails" );
+    private void ItemSelected(object sender, ItemTappedEventArgs e) {
+      var taskId = (e.Item as Task).TaskId;
+      Shell.Current.GoToAsync($"taskdetails?taskId={taskId}");
       //Navigation.PushAsync( new TaskDetailView( taskDetailVM ) );
     }
-  
+
+
+    protected override void OnAppearing() {
+      base.OnAppearing();
+      viewModel.LoadTasks();
+    }
   }
 }
