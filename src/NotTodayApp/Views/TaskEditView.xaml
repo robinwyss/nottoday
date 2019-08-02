@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NotTodayApp.Views.TaskEditView" BackgroundColor="Beige">
+             x:Class="NotTodayApp.Views.TaskEditView">
   <ContentPage.Content>
-    <StackLayout BackgroundColor="AliceBlue" VerticalOptions="FillAndExpand">
+    <StackLayout VerticalOptions="FillAndExpand">
       <Entry Text="{Binding Task.Name}"
              Placeholder="Title"
                 VerticalOptions="Start" 
                 HorizontalOptions="FillAndExpand" />
       <Editor Text="{Binding Task.Description}"
              Placeholder="Description"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="FillAndExpand" 
                 HorizontalOptions="FillAndExpand" />
       <Button Text="Save" VerticalOptions="End"
               HorizontalOptions="FillAndExpand"/>
