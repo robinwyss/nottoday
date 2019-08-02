@@ -13,7 +13,7 @@ namespace NotTodayApp {
     }
 
     private void Bootstrap() {
-      var databasePath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ), "XamarinLiteDB.db" );
+      var databasePath = System.IO.Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ), "XamarinLiteDB.db" );
 
     }
 
