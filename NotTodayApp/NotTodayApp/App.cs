@@ -12,6 +12,11 @@ namespace NotTodayApp {
       MainPage = new MainPage();
     }
 
+    private void Bootstrap() {
+      var databasePath = Path.Combine( Environment.GetFolderPath( Environment.SpecialFolder.LocalApplicationData ), "XamarinLiteDB.db" );
+
+    }
+
     protected override void OnStart() {
       // Handle when your app starts
     }
