@@ -13,7 +13,7 @@ using Xamarin.Forms.Internals;
 namespace NotTodayApp.ViewModel {
   public class TasksViewModel : BaseViewModel {
     private ObservableCollection<Task> _tasks;
-    private ITaskRepository taskRepository;
+    private ITaskRepository taskRepository => DependencyService.Get<ITaskRepository>();
 
     public ObservableCollection<Task> Tasks {
       get => _tasks;
@@ -23,9 +23,9 @@ namespace NotTodayApp.ViewModel {
       }
     }
 
-    public TasksViewModel() {
-      taskRepository = DependencyService.Resolve<ITaskRepository>();
-    }
+    //public TasksViewModel() {
+    //  taskRepository = DependencyService.Resolve<ITaskRepository>();
+    //}
 
     internal void LoadTasks() {
       var tasks = taskRepository.GetAllTasks();

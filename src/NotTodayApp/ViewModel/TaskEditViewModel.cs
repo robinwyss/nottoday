@@ -2,22 +2,32 @@
 using System.Windows.Input;
 using NotToday.Storage;
 using NotToday.Storage.Model;
+using NotTodayApp.Services;
 using NotTodayApp.Utils;
 using Xamarin.Forms;
 
 namespace NotTodayApp.ViewModel {
   public class TaskEditViewModel : BaseViewModel {
+    private ITaskRepository taskRepository => DependencyService.Resolve<ITaskRepository>();
+    private INavigationService navigationService => DependencyService.Resolve<INavigationService>();
+
     private string title;
     private string description;
-    private DateTime dueDate = DateTime.Today.AddDays(1);
+    private DateTime dueDate;
 
     public Command SaveCommand { get; set; }
 
+    public void Init() {
+      title = string.Empty;
+      description = string.Empty;
+      dueDate = DateTime.Today.AddDays( 1 );
+    }
+
     public TaskEditViewModel() {
-      var taskRepository = DependencyService.Resolve<ITaskRepository>();
       SaveCommand = new Command(() => {
         var task = new Task(Title, Description, DueDate);
         taskRepository.CreateOrUpdateTask(task);
+        navigationService.NagivateToAsync( "//today" );
       }, () => !string.IsNullOrEmpty(Title));
     }
 

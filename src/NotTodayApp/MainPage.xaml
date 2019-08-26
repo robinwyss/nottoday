@@ -4,28 +4,31 @@
        FlyoutBackgroundColor="White"
        Title="Not Today"
        >
-  <FlyoutItem Title="Today">
+  <FlyoutItem Title="Today" Route="today">
     <Tab>
-      <ShellContent>
-        <views:TaskListView />
-      </ShellContent>
-    </Tab>
+        <ShellContent Title="Today">
+          <views:TaskListView />
+        </ShellContent>
+        <ShellContent Title="Not Today">
+          <views:TaskListView />
+        </ShellContent>
+      </Tab>
+      <!--<Tab>-->
+      <!--<ShellContent Title="Not Today">
+            <views:TaskListView />
+          </ShellContent>
+        </Tab-->
   </FlyoutItem>
-  <FlyoutItem Title="Not Today">
-    <Tab>
-      <ShellContent>
-        <views:TaskListView />
-      </ShellContent>
-    </Tab>
+  <!--<FlyoutItem Title="Not Today" Route="nottoday">
+ 
 
-  </FlyoutItem>
-  <FlyoutItem Title="Add">
+  </FlyoutItem>-->
+  <FlyoutItem Title="Add" Route="addtask">
     <Tab>
-      <ShellContent>
+      <ShellContent Title="Add Task">
         <views:TaskEditView />
       </ShellContent>
     </Tab>
-
   </FlyoutItem>
 
 

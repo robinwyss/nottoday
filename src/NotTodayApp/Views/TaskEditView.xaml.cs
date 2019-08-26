@@ -10,9 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace NotTodayApp.Views {
   [XamlCompilation(XamlCompilationOptions.Compile)]
   public partial class TaskEditView : ContentPage {
+    private readonly TaskEditViewModel viewModel;
+
     public TaskEditView() {
       InitializeComponent();
-      BindingContext = new TaskEditViewModel();
+      viewModel = new TaskEditViewModel();
+      BindingContext = viewModel;
+    }
+
+    protected override void OnAppearing() {
+      base.OnAppearing();
+      viewModel.Init();
     }
   }
 }
