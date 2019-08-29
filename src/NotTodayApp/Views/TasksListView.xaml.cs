@@ -15,6 +15,14 @@ namespace NotTodayApp.Views {
   public partial class TaskListView : ContentPage {
     private TasksViewModel viewModel;
 
+    public string Time {
+      get { return (string)GetValue(TimeProperty); }
+      set { SetValue(TimeProperty, value); }
+    }
+
+    public static readonly BindableProperty TimeProperty =
+    BindableProperty.Create(nameof(Time), typeof(string), typeof(TaskListView));
+
     public TaskListView() {
       InitializeComponent();
       viewModel = new TasksViewModel();
@@ -24,6 +32,7 @@ namespace NotTodayApp.Views {
 
     private void ItemSelected(object sender, ItemTappedEventArgs e) {
       var taskId = (e.Item as Task).TaskId;
+      //Shell.Current.GoToAsync($"//addtask");
       Shell.Current.GoToAsync($"taskdetails?taskId={taskId}");
       //Navigation.PushAsync( new TaskDetailView( taskDetailVM ) );
     }
@@ -31,7 +40,13 @@ namespace NotTodayApp.Views {
 
     protected override void OnAppearing() {
       base.OnAppearing();
-      viewModel.LoadTasks();
+      if (Time == "today") {
+        viewModel.LoadTasks(ViewModel.Time.Today);
+      } else if (Time == "overdue") {
+        viewModel.LoadTasks(ViewModel.Time.Overdue);
+      } else {
+        viewModel.LoadTasks(ViewModel.Time.Future);
+      }
     }
   }
 }

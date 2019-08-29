@@ -27,9 +27,28 @@ namespace NotTodayApp.ViewModel {
     //  taskRepository = DependencyService.Resolve<ITaskRepository>();
     //}
 
-    internal void LoadTasks() {
-      var tasks = taskRepository.GetAllTasks();
+    internal void LoadTasks(Time time) {
+      var tasks = GetTasks(time);
       Tasks = new ObservableCollection<Task>(tasks);
     }
+
+    private IEnumerable<Task> GetTasks(Time time) {
+      switch (time) {
+        case Time.Today:
+          return taskRepository.GetTodaysTasks();
+        case Time.Future:
+          return taskRepository.GetFutureTasks();
+        case Time.Overdue:
+          return taskRepository.GetPastTasks();
+        default:
+          return taskRepository.GetAllTasks();
+      }
+    }
+  }
+
+  enum Time {
+    Today,
+    Future,
+    Overdue
   }
 }

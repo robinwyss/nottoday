@@ -17,7 +17,7 @@ namespace NotTodayApp {
       //Routing.RegisterRoute( "today", typeof( TaskListView ) );
       //Routing.RegisterRoute( "nottoday", typeof( TaskListView ) );
       //Routing.RegisterRoute( "addtask", typeof( TaskListView ) );
-      Routing.RegisterRoute( "taskdetails", typeof(TaskDetailView));
+      Routing.RegisterRoute("taskdetails", typeof(TaskDetailView));
       MainPage = new MainPage();
 
     }

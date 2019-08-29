@@ -22,6 +22,7 @@ namespace NotTodayApp.Views {
 
     public TaskDetailView() {
       InitializeComponent();
+      var current = Shell.Current;
       viewModel = new TaskDetailViewModel();
       BindingContext = viewModel;
     }

@@ -10,6 +10,9 @@
       <Label Text="{Binding Task.Description}"
                 VerticalOptions="Start" 
                 HorizontalOptions="Start" />
+      <Label Text="{Binding Task.DueDate}"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

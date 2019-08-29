@@ -7,6 +7,12 @@ namespace NotToday.Storage {
   public interface ITaskRepository {
     IEnumerable<Task> GetAllTasks();
 
+    IEnumerable<Task> GetTodaysTasks();
+
+    IEnumerable<Task> GetFutureTasks();
+
+    IEnumerable<Task> GetPastTasks();
+
     Task GetTask( Guid taskId );
 
     void DelteteTask( Guid taskId );
