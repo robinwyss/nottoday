@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotTodayApp.Views.TaskDetailView">
   <ContentPage.Content>
-    <StackLayout>
-      <Label Text="{Binding Task.Title}"
+    <ScrollView>
+      <StackLayout VerticalOptions="FillAndExpand">
+        <Label Text="{Binding Task.Title}"
                 VerticalOptions="Start" 
                 HorizontalOptions="Start" />
-      <Label Text="{Binding Task.Description}"
+        <Label Text="{Binding Task.Description}"
                 VerticalOptions="Start" 
                 HorizontalOptions="Start" />
-      <Label Text="{Binding Task.DueDate}"
+        <Label Text="{Binding Task.DueDate}"
                 VerticalOptions="Start" 
                 HorizontalOptions="Start" />
-    </StackLayout>
+      </StackLayout>
+    </ScrollView>
   </ContentPage.Content>
 </ContentPage>

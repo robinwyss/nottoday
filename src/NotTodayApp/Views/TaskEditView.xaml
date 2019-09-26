@@ -2,23 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotTodayApp.Views.TaskEditView">
-    <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand">
-            <Entry Text="{Binding Title}"
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout VerticalOptions="FillAndExpand">
+        <Entry Text="{Binding Title}"
                    Placeholder="Title"
                    VerticalOptions="Start"
                    HorizontalOptions="FillAndExpand" />
-            <Editor Text="{Binding Description}"
+        <Editor Text="{Binding Description}"
                     Placeholder="Description"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand" />
-            <DatePicker Date="{Binding Converter}"
+        <DatePicker Date="{Binding DueDate}"
                         VerticalOptions="End"
                         HorizontalOptions="FillAndExpand" />
-            <Button Text="Save"
+        <Button Text="Save"
                     Command="{Binding SaveCommand}"
                     VerticalOptions="End"
                     HorizontalOptions="FillAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
 </ContentPage>
