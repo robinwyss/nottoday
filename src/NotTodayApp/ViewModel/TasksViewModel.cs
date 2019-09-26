@@ -23,10 +23,6 @@ namespace NotTodayApp.ViewModel {
       }
     }
 
-    //public TasksViewModel() {
-    //  taskRepository = DependencyService.Resolve<ITaskRepository>();
-    //}
-
     internal void LoadTasks(Time time) {
       var tasks = GetTasks(time);
       Tasks = new ObservableCollection<Task>(tasks);

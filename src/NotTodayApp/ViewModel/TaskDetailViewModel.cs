@@ -20,10 +20,6 @@ namespace NotTodayApp.ViewModel {
       }
     }
 
-    //public TaskDetailViewModel() {
-    //  taskRepository = DependencyService.Resolve<ITaskRepository>();
-    //}
-
     public void LoadTask(string taskId) {
       var taskGuid = Guid.Parse(taskId);
       Task = taskRepository.GetTask(taskGuid);

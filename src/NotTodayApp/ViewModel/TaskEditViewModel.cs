@@ -18,9 +18,9 @@ namespace NotTodayApp.ViewModel {
     public Command SaveCommand { get; set; }
 
     public void Init() {
-      title = string.Empty;
-      description = string.Empty;
-      dueDate = DateTime.Today.AddDays( 1 );
+      Title = string.Empty;
+      Description = string.Empty;
+      DueDate = DateTime.Today.AddDays( 1 );
     }
 
     public TaskEditViewModel() {
