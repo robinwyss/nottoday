@@ -14,6 +14,10 @@
         <Label Text="{Binding Task.DueDate}"
                 VerticalOptions="Start" 
                 HorizontalOptions="Start" />
+        <Button Text="Edit" 
+                Command="{Binding EditCommand}"
+                VerticalOptions="End"  
+                HorizontalOptions="FillAndExpand"/>
       </StackLayout>
     </ScrollView>
   </ContentPage.Content>

@@ -32,9 +32,7 @@ namespace NotTodayApp.Views {
 
     private void ItemSelected(object sender, ItemTappedEventArgs e) {
       var taskId = (e.Item as Task).TaskId;
-      //Shell.Current.GoToAsync($"//addtask");
-      Shell.Current.GoToAsync($"taskdetails?taskId={taskId}");
-      //Navigation.PushAsync( new TaskDetailView( taskDetailVM ) );
+      Shell.Current.GoToAsync($"/taskdetails?taskId={taskId}");
     }
 
 

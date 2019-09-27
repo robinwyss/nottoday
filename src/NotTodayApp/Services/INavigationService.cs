@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace NotTodayApp.Services {
   interface INavigationService {
-     Task NagivateToAsync( string route );
+    Task NagivateToAsync( string route );
+
+    Task NavigateBackAsync();
   }
 }

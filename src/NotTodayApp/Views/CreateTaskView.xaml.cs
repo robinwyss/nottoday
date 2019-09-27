@@ -10,23 +10,20 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace NotTodayApp.Views {
-
-  [QueryProperty( "TaskId", "taskId" )]
   [XamlCompilation( XamlCompilationOptions.Compile )]
-  public partial class TaskEditView: ContentPage {
-    private readonly TaskEditViewModel viewModel;
-    public String TaskId { get; set; }
+  public partial class CreateTaskView: ContentPage {
+    private readonly CreateTaskViewModel viewModel;
 
-    public TaskEditView() {
+    public CreateTaskView() {
       InitializeComponent();
-      viewModel = new TaskEditViewModel();
+      viewModel = new CreateTaskViewModel();
       BindingContext = viewModel;
     }
 
     protected override void OnAppearing() {
       base.OnAppearing();
       Xamarin.Forms.Application.Current.On<Android>().UseWindowSoftInputModeAdjust( WindowSoftInputModeAdjust.Resize );
-      viewModel.Init( TaskId );
+      viewModel.Init();
     }
   }
 }

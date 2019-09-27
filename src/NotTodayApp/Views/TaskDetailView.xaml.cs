@@ -9,22 +9,22 @@ using Xamarin.Forms.Xaml;
 
 namespace NotTodayApp.Views {
 
-  [QueryProperty("TaskId", "taskId")]
-  [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class TaskDetailView : ContentPage {
+  [QueryProperty( "TaskId", "taskId" )]
+  [XamlCompilation( XamlCompilationOptions.Compile )]
+  public partial class TaskDetailView: ContentPage {
     private readonly TaskDetailViewModel viewModel;
 
-    public string TaskId {
-      set {
-        viewModel.LoadTask(value);
-      }
-    }
+    public string TaskId { get; set; }
 
     public TaskDetailView() {
       InitializeComponent();
       var current = Shell.Current;
       viewModel = new TaskDetailViewModel();
       BindingContext = viewModel;
+    }
+
+    protected override void OnAppearing() {
+      viewModel.LoadTask( TaskId );
     }
   }
 }

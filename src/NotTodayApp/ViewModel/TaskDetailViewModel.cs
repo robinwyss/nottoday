@@ -8,10 +8,18 @@ using NotTodayApp.Utils;
 using Xamarin.Forms;
 
 namespace NotTodayApp.ViewModel {
-  public class TaskDetailViewModel : BaseViewModel {
+  public class TaskDetailViewModel: BaseViewModel {
     private ITaskRepository taskRepository => DependencyService.Resolve<ITaskRepository>();
     private INavigationService navigationService => DependencyService.Get<INavigationService>();
     private Task task;
+
+    public Command EditCommand { get; private set; }
+
+    public TaskDetailViewModel() {
+      EditCommand = new Command( () => {
+        navigationService.NagivateToAsync( $"edittask?taskId={task.TaskId}" );
+      } );
+    }
 
     public Task Task {
       get => task; set {
@@ -20,9 +28,9 @@ namespace NotTodayApp.ViewModel {
       }
     }
 
-    public void LoadTask(string taskId) {
-      var taskGuid = Guid.Parse(taskId);
-      Task = taskRepository.GetTask(taskGuid);
+    public void LoadTask( string taskId ) {
+      var taskGuid = Guid.Parse( taskId );
+      Task = taskRepository.GetTask( taskGuid );
     }
   }
 }

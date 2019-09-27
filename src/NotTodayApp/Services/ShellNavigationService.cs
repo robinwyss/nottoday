@@ -8,5 +8,9 @@ namespace NotTodayApp.Services {
     public async System.Threading.Tasks.Task NagivateToAsync( string route ) {
       await Shell.Current.GoToAsync( route );
     }
+
+    public async System.Threading.Tasks.Task NavigateBackAsync() {
+      await Shell.Current.Navigation.PopAsync();
+    }
   }
 }

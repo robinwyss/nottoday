@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Windows.Input;
+using System.Collections.Generic;
+using System.Text;
 using NotToday.Storage;
 using NotToday.Storage.Model;
 using NotTodayApp.Services;
@@ -7,33 +8,28 @@ using NotTodayApp.Utils;
 using Xamarin.Forms;
 
 namespace NotTodayApp.ViewModel {
-  public class TaskEditViewModel: BaseViewModel {
+  class CreateTaskViewModel: BaseViewModel {
     private ITaskRepository taskRepository => DependencyService.Resolve<ITaskRepository>();
     private INavigationService navigationService => DependencyService.Resolve<INavigationService>();
 
     private string title;
     private string description;
     private DateTime dueDate;
-    private Task task;
 
     public Command SaveCommand { get; private set; }
 
-    public void Init( string taskId ) {
-      var id = Guid.Parse( taskId );
-      task = taskRepository.GetTask( id );
-      Title = task.Title;
-      Description = task.Description;
-      DueDate = task.DueDate;
+    public CreateTaskViewModel() {
+      SaveCommand = new Command( () => {
+        var task = new Task( Title, Description, DueDate );
+        taskRepository.CreateOrUpdateTask( task );
+        navigationService.NagivateToAsync( "//today" );
+      }, () => !string.IsNullOrEmpty( Title ) );
     }
 
-    public TaskEditViewModel() {
-      SaveCommand = new Command( () => {
-        task.Title = Title;
-        task.Description = Description;
-        task.DueDate = DueDate;
-        taskRepository.CreateOrUpdateTask( task );
-        navigationService.NavigateBackAsync();
-      }, () => !string.IsNullOrEmpty( Title ) );
+    public void Init() {
+      Title = string.Empty;
+      Description = string.Empty;
+      DueDate = DateTime.Today.AddDays( 1 );
     }
 
     public string Title {
@@ -55,7 +51,5 @@ namespace NotTodayApp.ViewModel {
         OnPropertyChanged();
       }
     }
-
-
   }
 }
