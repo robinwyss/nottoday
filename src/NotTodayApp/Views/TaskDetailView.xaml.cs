@@ -26,5 +26,12 @@ namespace NotTodayApp.Views {
     protected override void OnAppearing() {
       viewModel.LoadTask( TaskId );
     }
+
+    private async void DeleteButtonClicked( object sender, EventArgs e ) {
+      string action = await DisplayActionSheet( "Delete task?", "Cancel", "Delete" );
+      if ( action == "Delete" ) {
+        viewModel.DeleteCommand.Execute(null);
+      }
+    }
   }
 }

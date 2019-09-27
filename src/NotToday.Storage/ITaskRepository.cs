@@ -15,7 +15,7 @@ namespace NotToday.Storage {
 
     Task GetTask( Guid taskId );
 
-    void DelteteTask( Guid taskId );
+    void DeleteTask( Guid taskId );
 
     Guid CreateOrUpdateTask( Task task );
   }

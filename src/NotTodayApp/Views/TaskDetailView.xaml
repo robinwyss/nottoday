@@ -18,6 +18,10 @@
                 Command="{Binding EditCommand}"
                 VerticalOptions="End"  
                 HorizontalOptions="FillAndExpand"/>
+        <Button Text="Delete" 
+                Clicked="DeleteButtonClicked"
+                VerticalOptions="End"  
+                HorizontalOptions="FillAndExpand"/>
       </StackLayout>
     </ScrollView>
   </ContentPage.Content>

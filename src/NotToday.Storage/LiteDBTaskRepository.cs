@@ -38,7 +38,7 @@ namespace NotToday.Storage {
       return task.TaskId;
     }
 
-    public void DelteteTask(Guid taskId) {
+    public void DeleteTask(Guid taskId) {
       _taskCollection = GetTaskCollection();
       var deletedTasks = _taskCollection.Delete(t => t.TaskId == taskId);
       if (deletedTasks == 0) {

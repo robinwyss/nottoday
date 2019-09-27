@@ -14,10 +14,15 @@ namespace NotTodayApp.ViewModel {
     private Task task;
 
     public Command EditCommand { get; private set; }
+    public Command DeleteCommand { get; private set; }
 
     public TaskDetailViewModel() {
       EditCommand = new Command( () => {
         navigationService.NagivateToAsync( $"edittask?taskId={task.TaskId}" );
+      } );
+      DeleteCommand = new Command( () => {
+        taskRepository.DeleteTask( task.TaskId );
+        navigationService.NavigateBackAsync();
       } );
     }
 
@@ -27,6 +32,8 @@ namespace NotTodayApp.ViewModel {
         OnPropertyChanged();
       }
     }
+
+
 
     public void LoadTask( string taskId ) {
       var taskGuid = Guid.Parse( taskId );
